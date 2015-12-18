@@ -1,0 +1,687 @@
+--
+-- CLASSDEF for TFS 2.9 CUSTOM CLASSES AT END
+--
+-- This file only contains ship classfication lists that allow the AI script writer to seperate each ship
+-- into different subclasses (fighters, corvettes, anti-fighter, fast, slow,...) This is done to make it easier
+-- (and faster) to refer to a ship based on its generalized properties.
+--
+-- Custom classes can be added at the end but have to be added in a very specific way.
+-- 
+
+aitrace("CPU: CLASSDEF LOADED")
+
+
+-- table of all squadron class lists
+squadclass = {}
+
+-- is mothership
+squadclass[eMotherShip] = {
+	HGN_MOTHERSHIP,
+	
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+
+      COMMAND_BASE,
+      COMMAND_BASE_HGN,
+}
+
+-- can harvest
+squadclass[eCollector] = {
+	HGN_RESOURCECOLLECTOR,
+	
+	VGR_RESOURCECOLLECTOR,
+}
+
+-- is a good scout/explorer
+squadclass[eScout] = {
+	HGN_SCOUT,
+	HGN_PROBE,
+	HGN_PROXIMITYSENSOR,
+	HGN_ECMPROBE,
+	
+	VGR_SCOUT,
+	VGR_PROBE,
+	VGR_PROBE_PROX,
+	VGR_PROBE_ECM,
+	VGR_MOBILE_INHIBITOR,
+}
+
+-- is a refinery
+squadclass[eRefinery] = {
+	HGN_RESOURCECONTROLLER,
+    HGN_MONITOR,
+	
+	VGR_RESOURCECONTROLLER,
+	VGR_RESOURCECONTROLLER_ADVANCED,
+}
+
+-- can build ships
+squadclass[eBuilder] = {
+	HGN_MOTHERSHIP,
+	HGN_CARRIER,
+	HGN_SHIPYARD,
+      HGN_SCOUTCARRIER,
+      HGN_DRONECARRIER,
+      HGN_ASSAULTCARRIER,
+		
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+	VGR_CARRIER,
+	VGR_SHIPYARD,
+}
+
+-- can be used as a resource dropoff
+squadclass[eDropOff] = {
+	HGN_MOTHERSHIP,
+	HGN_CARRIER, 
+	HGN_SCOUTCARRIER,
+	HGN_SHIPYARD,
+	HGN_RESOURCECONTROLLER,
+    HGN_MONITOR,
+    HGN_ASSAULTCARRIER,
+	
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+	VGR_CARRIER,
+	VGR_SCOUTCARRIER,
+	VGR_SHIPYARD,
+	VGR_RESOURCECONTROLLER,
+	VGR_RESOURCECONTROLLER_ADVANCED,
+}
+
+-- can be used as a salvage dropoff
+squadclass[eSalvageDropOff] = {
+    HGN_MOTHERSHIP,
+	HGN_CARRIER,
+	HGN_SCOUTCARRIER,
+	HGN_SHIPYARD,
+    HGN_ASSAULTCARRIER,
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+	VGR_CARRIER,
+	VGR_SCOUTCARRIER,
+	VGR_SHIPYARD,
+}
+
+-- is a fighter
+squadclass[eFighter] = {
+	HGN_INTERCEPTOR,
+    hgn_interceptor_elite,
+    HGN_FIGHTER,
+    HGN_FIGHTER_LRCT,
+    HGN_LBOMBER,
+    Hgn_Fighter_Pulsar,
+	
+    HGN_ATTACKBOMBER,
+    HGN_HEAVYBOMBER,
+    HGN_ROCKETBOMBER,
+	
+	VGR_INTERCEPTOR,
+    VGR_FIGHTER,
+	VGR_LANCEFIGHTER,
+	VGR_HEAVYINTERCEPTOR,
+    VGR_FIGHTER_LRCM,
+	
+    VGR_BOMBER,
+	VGR_BOMBER_STRATEGIC,
+	VGR_BOMBER_INTERDICTION,
+    VGR_LASERBOMBER,
+    
+    --SINGLE PLAYER FIGHTERS
+    VGR_ASSAULTFIGHTER,
+    VGR_ELITEFIGHTER,
+    VGR_INTERCEPTOR_EMP,
+    HGN_ATTACKBOMBERELITE,
+    HGN_LASERBOMBER,
+}
+
+-- is a corvette
+squadclass[eCorvette] = {
+	HGN_ASSAULTCORVETTE,
+	HGN_PULSARCORVETTE,
+	HGN_MINELAYERCORVETTE,
+    HGN_MULTIGUNCORVETTE,
+    HGN_HEAVYCORVETTE,
+    HGN_BOMBERVETTE,
+	
+	VGR_MISSILECORVETTE,
+	VGR_LASERCORVETTE,
+	VGR_MINELAYERCORVETTE,
+	VGR_COMMANDCORVETTE,
+    VGR_MULTILANCECORVETTE,
+	VGR_MISSILECORVETTEADV,
+	  VGR_SHAMSHIRIICTH,
+      VGR_SHAMSHIRIICTG,
+}
+
+-- is a frigate
+squadclass[eFrigate] = {
+	HGN_IONCANNONFRIGATE,
+    HGN_ARTILLERYFRIGATE,
+	HGN_MARINEFRIGATE,
+	HGN_MARINEFRIGATE_SOBAN,
+	HGN_TORPEDOFRIGATE,
+	HGN_SUPPORTFRIGATE,
+    HGN_LRMS,
+
+	HGN_ASSAULTFRIGATE,
+    HGN_FLAKFRIGATE,
+    HGN_DEFENSEFIELDFRIGATE,
+	
+	VGR_ASSAULTFRIGATE,
+	VGR_INTERCEPTORFRIGATE,
+	VGR_BATTLEFRIGATE,
+    VGR_SCOUTFRIGATE,
+	
+	VGR_HEAVYMISSILEFRIGATE,
+	VGR_INFILTRATORFRIGATE,
+    VGR_LRCTS,
+    VGR_ARMAMENTSFRIGATE,
+    VGR_ARTILLERYFRIGATE,
+      
+      --OLD UNITS
+      VGR_ESCORTFRIGATE,
+      HGN_TORPEDOFRIGATEADVANCED,
+}
+
+-- can capture other ships
+squadclass[eCapture] = {
+	HGN_MARINEFRIGATE,
+	HGN_MARINEFRIGATE_SOBAN,
+	VGR_INFILTRATORFRIGATE,
+}
+
+-- has shields
+squadclass[eShield] = {
+	HGN_DEFENSEFIELDFRIGATE,
+	HGN_ESCORTDESTROYER,
+}
+
+-- is a platform
+squadclass[ePlatform] = {
+	HGN_GUNTURRET,
+	HGN_IONTURRET,
+      HGN_PULSARTURRET,
+      HGN_RAPIDFIREGUNTURRET,
+      HGN_PLASMAGUNTURRET,
+      HGN_MISSILETURRET,
+      HGN_FLAKTURRET,
+	
+	VGR_WEAPONPLATFORM_GUN,
+	VGR_WEAPONPLATFORM_MISSILE,
+	VGR_HYPERSPACE_PLATFORM,
+      VGR_WEAPONPLATFORM_LASER,
+      VGR_WEAPONPLATFORM_SRDFM,
+      VGR_WEAPONPLATFORM_RAPIDGUN,
+
+}
+
+-- good at attacking fighters
+squadclass[eAntiFighter] = {
+	HGN_INTERCEPTOR,
+    HGN_FIGHTER,
+	HGN_ASSAULTCORVETTE,
+	HGN_MULTIGUNCORVETTE,
+    HGN_ASSAULTFRIGATE,
+    HGN_FLAKFRIGATE,
+	HGN_DEFENSEFIELDFRIGATE,
+    --HGN_HEAVYCORVETTE,
+    HGN_GUNTURRET,
+    HGN_RAPIDFIREGUNTURRET,
+    HGN_ESCORTDESTROYER,
+    HGN_ASSAULTCARRIER,
+	
+    VGR_INTERCEPTOR,
+    VGR_FIGHTER,
+	VGR_HEAVYINTERCEPTOR,
+    VGR_MULTILANCECORVETTE,
+	--VGR_MISSILECORVETTE,
+	VGR_MISSILECORVETTEADV,
+      VGR_SHAMSHIRIICTH,
+    VGR_ASSAULTFRIGATE,
+    VGR_INTERCEPTORFRIGATE,
+    VGR_SCOUTFRIGATE,      
+    VGR_COMMANDCORVETTE,
+    VGR_STRIKECARRIER,
+    VGR_WEAPONPLATFORM_RAPIDGUN,
+	VGR_WEAPONPLATFORM_GUN,
+    VGR_WEAPONPLATFORM_SRDFM,
+    
+    MWS_ANTIFIGHTER1,
+    MWS_ANTIFIGHTER2,
+    MWS_ANTIFIGHTERADV1,
+    MWS_ANTIFIGHTERADV2,
+
+	--SINGLE PLAYER UNITS
+	VGR_ASSAULTFIGHTER,
+	VGR_ELITEFIGHTER,
+      hgn_interceptor_elite,
+      HGN_FLAKTURRET,
+      HGN_MISSILETURRET,
+}
+
+-- good at killing corvettes
+squadclass[eAntiCorvette] = {
+	HGN_FIGHTER_LRCT,
+    Hgn_FIGHTER_PULSAR,
+    HGN_PULSARCORVETTE,
+	HGN_TORPEDOFRIGATE,
+    HGN_HEAVYCORVETTE,
+	HGN_ASSAULTFRIGATE,
+    HGN_ESCORTDESTROYER,
+    --HGN_TORPEDODESTROYER,
+	HGN_MISSILECRUISER,
+    HGN_PULSARTURRET,
+    HGN_PLASMAGUNTURRET,
+	
+	VGR_LANCEFIGHTER,
+    VGR_FIGHTER_LRCM,
+    VGR_BOMBER_INTERDICTION,
+    VGR_MISSILECORVETTE,
+	VGR_MISSILECORVETTEADV,
+      VGR_SHAMSHIRIICTG,
+	VGR_ASSAULTFRIGATE,
+	VGR_INTERCEPTORFRIGATE,
+    VGR_LRCTS,
+    VGR_ARMAMENTSFRIGATE,
+    VGR_STRIKECARRIER,
+    VGR_DESTROYERLEADER,
+    VGR_COMMANDCORVETTE,
+    VGR_WEAPONPLATFORM_LASER,
+    VGR_WEAPONPLATFORM_SRDFM,
+
+	MWS_ANTICORVETTE1,
+	MWS_ANTICORVETTE2,
+	MWS_ANTICORVETTEADV1,
+	MWS_ANTICORVETTEADV2,
+
+	--SINGLE PLAYER UNITS
+	VGR_ASSAULTFIGHTER,
+	VGR_ESCORTFRIGATE,
+    VGR_BATTLEFRIGATE,
+}
+
+-- good at killing frigates
+squadclass[eAntiFrigate] = {
+	HGN_ATTACKBOMBER,
+	HGN_ATTACKBOMBERELITE,
+    HGN_HEAVYBOMBER,
+    HGN_ROCKETBOMBER,
+    HGN_HEAVYCORVETTE,
+    HGN_BOMBERVETTE,
+    HGN_PULSARCORVETTE,
+    
+    HGN_ARTILLERYFRIGATE,
+    HGN_IONCANNONFRIGATE,
+	HGN_TORPEDOFRIGATE,
+	HGN_MARINEFRIGATE,
+	HGN_MARINEFRIGATE_SOBAN,
+	HGN_DEFENSEFIELDFRIGATE,
+    HGN_LRMS,
+    HGN_DESTROYER,	
+    HGN_IONDESTROYER,
+    HGN_MISSILECRUISER,
+    HGN_LIGHTCRUISER,
+	HGN_BATTLECRUISER,
+	HGN_STRIKEBATTLECRUISER,
+	HGN_IONTURRET,
+    HGN_PLASMAGUNTURRET,
+	
+    VGR_BOMBER,
+    VGR_BOMBER_STRATEGIC,
+    VGR_BOMBER_INTERDICTION,
+    VGR_LASERBOMBER,
+    VGR_HEAVYINTERCEPTOR,
+    VGR_LASERCORVETTE,
+    
+    VGR_HEAVYMISSILEFRIGATE,
+    VGR_ARTILLERYFRIGATE,
+	VGR_INFILTRATORFRIGATE,
+	VGR_INTERCEPTORFRIGATE,
+    VGR_LRCTS,
+    VGR_ARMAMENTSFRIGATE,
+
+	VGR_DESTROYER,
+    VGR_DESTROYERLEADER,
+    VGR_LIGHTCRUISER,
+    VGR_HEAVYCRUISER,	
+	VGR_BATTLECRUISER,
+    VGR_ARTILLERYBATTLECRUISER,
+    VGR_WEAPONPLATFORM_LASER,
+  	VGR_WEAPONPLATFORM_MISSILE,
+	
+	MWS_ANTIFRIGATE1,
+	MWS_ANTIFRIGATE2,
+	MWS_ANTICAPITAL1,
+	MWS_ANTICAPITAL2,
+
+	--SINGLE PLAYER UNITS
+    HGN_LASERBOMBER,
+	HGN_TORPEDOFRIGATEADVANCED,
+	HGN_TORPEDODESTROYER,
+	HGN_DESTROYERLEADER,
+    VGR_BATTLEFRIGATE,
+    VGR_ELITEFIGHTER,
+}
+
+-- is a capital ship
+squadclass[eCapital] = {
+	HGN_CARRIER,
+	HGN_SCOUTCARRIER,
+	HGN_MOTHERSHIP,
+	HGN_SHIPYARD,
+	
+	HGN_DESTROYER,
+    HGN_IONDESTROYER,
+	HGN_ESCORTDESTROYER,
+	HGN_MISSILECRUISER,
+	HGN_ASSAULTCARRIER,
+	
+	HGN_LIGHTCRUISER,
+	HGN_BATTLECRUISER,
+	HGN_STRIKEBATTLECRUISER,
+	
+	HGN_DESTROYERLEADER,
+	HGN_TORPEDODESTROYER,
+	HGN_DREADNAUGHT,
+	
+	VGR_CARRIER,
+	VGR_SCOUTCARRIER,
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+	VGR_SHIPYARD,
+	
+	VGR_DESTROYER,
+	VGR_DESTROYERLEADER,
+	VGR_LIGHTCRUISER,
+	VGR_STRIKECARRIER,
+	
+	VGR_HEAVYCRUISER,
+	VGR_BATTLECRUISER,
+    VGR_ARTILLERYBATTLECRUISER,
+    
+    VGR_MEDIUMCRUISER,
+    VGR_STRIKECARRIER_VLS,
+    VGR_STRIKECARRIERB,
+}
+
+-- eCollector + eScout (maybe refineries - but those things are pretty tough?)
+-- this is currently only used to count the number of 'military units' the player/enemy has
+squadclass[eNonThreat] = {
+	HGN_RESOURCECOLLECTOR,
+	VGR_RESOURCECOLLECTOR,
+	HGN_RESOURCECONTROLLER,
+	VGR_RESOURCECONTROLLER,
+	VGR_RESOURCECONTROLLER_ADVANCED,
+      HGN_MONITOR,
+	
+	HGN_CARRIER,
+	HGN_SCOUTCARRIER,
+	HGN_MOTHERSHIP,
+	HGN_SHIPYARD,
+	VGR_CARRIER,
+	VGR_MOTHERSHIP,
+	VGR_MOTHERSHIP_MAKAAN,
+	VGR_SHIPYARD,
+	VGR_SCOUTCARRIER,
+	
+	HGN_SCOUT,
+	HGN_PROBE,
+	HGN_PROXIMITYSENSOR,
+	HGN_ECMPROBE,
+		
+	VGR_SCOUT,
+	VGR_PROBE,
+	VGR_PROBE_PROX,
+	VGR_PROBE_ECM,
+	
+	VGR_HYPERSPACE_PLATFORM,
+    VGR_MOBILE_INHIBITOR,
+    VGR_COMMANDCORVETTE,
+}
+
+-- is a hyperspace gate
+squadclass[eHyperspaceGate] = 
+{
+	VGR_HYPERSPACE_PLATFORM
+}
+
+-- good at killing subsystems
+squadclass[eSubSystemAttackers] = 
+{
+    HGN_LBOMBER,
+    HGN_ATTACKBOMBER,
+	HGN_ATTACKBOMBERELITE,
+      HGN_HEAVYBOMBER,
+      HGN_IONCANNONFRIGATE,
+      HGN_ARTILLERYFRIGATE,
+      HGN_LRMS,
+      HGN_BOMBERVETTE,
+      HGN_HEAVYCORVETTE,
+
+	VGR_BOMBER,
+    VGR_BOMBER_STRATEGIC,
+    --VGR_HEAVYINTERCEPTOR,
+	VGR_LASERCORVETTE,
+	VGR_HEAVYMISSILEFRIGATE,
+	VGR_ARTILLERYFRIGATE,
+    VGR_LRCTS,
+}
+
+-- non critical subsystems
+squadclass[eNonCriticalSubSys] = 
+{
+	CLOAKGENERATOR,
+	FIRECONTROLTOWER,
+	HYPERSPACEINHIBITOR,
+	ADVANCEDARRAY,
+	CLOAKSENSOR,
+}
+
+-- good at killing repairing collectors
+squadclass[eGoodRepairAttackers] = 
+{
+	Hgn_Fighter_Pulsar,
+	HGN_ROCKETBOMBER,
+	HGN_ASSAULTFRIGATE,
+	HGN_IONCANNONFRIGATE,
+	HGN_TORPEDOFRIGATE,
+	HGN_TORPEDODESTROYER,
+      HGN_MULTIGUNCORVETTE,
+      HGN_ASSAULTFRIGATE,
+      HGN_LBOMBER,
+      HGN_HEAVYBOMBER,
+	
+	VGR_HEAVYINTERCEPTOR,
+	VGR_MISSILECORVETTE,
+	VGR_LASERCORVETTE,
+      VGR_FIGHTER_LRCM,
+	VGR_ASSAULTFRIGATE,
+	VGR_HEAVYMISSILEFRIGATE,
+	VGR_DESTROYER,
+     VGR_SHAMSHIRIICTG,
+     VGR_MISSILECORVETTEADV,
+      VGR_LRCTS,
+      VGR_BOMBER_INTERDICTION,
+      VGR_ARMAMENTSFRIGATE,
+
+}
+
+-------------------------------------------
+-- CUSTOM classes
+
+-- do not exceed eMaxUserCount(32)
+
+eUselessShips = eMaxCount
+eBattleCruiser = eMaxCount + 1
+eAntiFighterFighter = eMaxCount + 2
+eStrategicBomber = eMaxCount + 3
+eAntiFighterCorvette = eMaxCount + 4
+eAntiCorvetteCorvette = eMaxCount + 5
+eAntiCorvetteFighter = eMaxCount + 6
+eAntiFighterFrigate = eMaxCount + 7
+eAntiFrigateFrigate = eMaxCount + 8
+eAntiCruiser = eMaxCount + 9
+
+-- this number should be one greater then the highest class
+sg_maxClasses = eAntiCruiser+1
+
+-- ships that the AI should not build because they are not used properly
+squadclass[ eUselessShips ] = 
+{
+	HGN_MINELAYERCORVETTE,
+	
+	VGR_MINELAYERCORVETTE,
+      --VGR_STANDVETTE,
+      --VGR_SHAMSHIRIICTH,
+      --VGR_SHAMSHIRIICTG,
+}
+
+-- is a battlecruiser
+squadclass[eBattleCruiser] = 
+{
+	HGN_BATTLECRUISER,
+	HGN_STRIKEBATTLECRUISER,
+	HGN_LIGHTCRUISER,
+	
+	VGR_BATTLECRUISER,
+	VGR_ARTILLERYBATTLECRUISER,
+	VGR_HEAVYCRUISER,
+	VGR_MEDIUMCRUISER,
+}
+
+-- is Anti-Fighter Fighter
+squadclass[eAntiFighterFighter] = 
+{
+	HGN_INTERCEPTOR,
+	HGN_INTERCEPTOR_ELITE,
+	HGN_FIGHTER,
+	--HGN_FIGHTER_LRCT,
+	VGR_INTERCEPTOR,
+	VGR_FIGHTER,
+	VGR_HEAVYFIGHTER,
+}
+
+-- is Strategic Bomber
+squadclass[eStrategicBomber] = 
+{
+	HGN_HEAVYBOMBER,
+	VGR_BOMBER_STRATEGIC,
+	VGR_BOMBER_INTERDICTION,
+}
+
+-- is Anti-Fighter Corvette
+squadclass[eAntiFighterCorvette] = 
+{
+	HGN_ASSAULTCORVETTE,
+	HGN_MULTIGUNCORVETTE,
+	VGR_MULTILANCECORVETTE,
+	VGR_MISSILECORVETTEADV,
+}
+
+-- is Anti-Corvette Corvette
+squadclass[eAntiCorvetteCorvette] = 
+{
+	HGN_PULSARCORVETTE,
+	HGN_HEAVYCORVETTE,
+	VGR_MISSILECORVETTE,
+	VGR_MISSILECORVETTEADV,
+}
+
+-- is Anti-Corvette Fighter
+squadclass[eAntiCorvetteFighter] = 
+{
+	HGN_FIGHTER_PULSAR,
+	HGN_FIGHTER_LRCT,
+	VGR_FIGHTER_LRCM,
+	VGR_LANCEFIGHTER,
+}
+
+-- is Anti-Fighter Frigate 
+squadclass[eAntiFighterFrigate] = 
+{
+	HGN_FLAKFRIGATE,
+	HGN_ASSAULTFRIGATE,
+	VGR_ASSAULTFRIGATE,
+	VGR_SCOUTFRIGATE,
+}
+
+-- is Anti-Frigate Frigate 
+squadclass[eAntiFrigateFrigate] = 
+{
+	HGN_IONCANNONFRIGATE,
+	HGN_ARTILLERYFRIGATE,
+	HGN_TORPEDOFRIGATE,
+	HGN_LRMS,
+	HGN_SUPPORTFRIGATE,
+	HGN_MARINEFRIGATE,
+	
+	VGR_HEAVYMISSILEFRIGATE,
+	VGR_ARTILLERYFRIGATE,
+	VGR_LRCTS,
+	VGR_ARMAMENTSFRIGATE,
+	VGR_INTERCEPTORFRIGATE,
+}
+
+-- is Anti-Cruiser SC 
+squadclass[eAntiCruiser] = 
+{
+	HGN_ATTACKBOMBER,
+	HGN_HEAVYBOMBER,
+	HGN_BOMBERVETTE,
+	HGN_LRMS,
+	HGN_ARTILLERYFRIGATE,
+	
+	VGR_BOMBER,
+	VGR_BOMBER_STRATEGIC,
+	VGR_LRCTS,
+	VGR_LASERCORVETTE,
+	VGR_INTERCEPTORFRIGATE,
+}
+
+--
+-- FUNCTIONS TO ADD SQUADRON TYPES TO CLASS SYSTEM
+--
+
+function FastAddToClass( tbl, classid )
+	for a,b in tbl do
+		AddToClass( b, classid )
+	end
+end
+
+function ClassInitialize()
+
+	for i=0, sg_maxClasses do
+		if (squadclass[i]) then
+			FastAddToClass( squadclass[i], i )
+		end
+	end
+	
+	-- debug: name all the classes to be displayed on screen
+	AddClassName( eMotherShip, "Motherships")
+	AddClassName( eCollector, "Collectors")
+	AddClassName( eDropOff, "DropOffs")
+	AddClassName( eFighter, "Fighters")
+	AddClassName( eFrigate, "Frigates")
+	AddClassName( eCorvette, "Corvettes")
+	AddClassName( eCapital, "Capital")
+	AddClassName( eAntiFighter, "AntiFighter")
+	AddClassName( eAntiCorvette, "AntiCorvette")
+	AddClassName( eAntiFrigate, "AntiFrigate")
+	AddClassName( ePlatform, "Platform")
+	AddClassName( eRefinery, "Refinery")
+	AddClassName( eHyperspaceGate, "HypGates")
+	AddClassName( eShield, "Shields")
+	AddClassName( eCapture, "Capture")
+	AddClassName( eSubSystemAttackers, "SubSysKillas")
+	AddClassName( eBattleCruiser, "BattleCruiser")
+	AddClassName( eAntiFighterFighter, "AntiFighterFighter")
+	AddClassName( eStrategicBomber, "StrategicBomber")
+	AddClassName( eAntiFighterCorvette, "AntiFighterCorvette")
+	AddClassName( eAntiCorvetteCorvette, "AntiCorvetteCorvette")
+	AddClassName( eAntiCorvetteFighter, "AntiCorvetteFighter")
+	AddClassName( eAntiFighterFrigate, "AntiFighterFrigate")
+	AddClassName( eAntiFrigateFrigate, "AntiFrigateFrigate")
+	AddClassName( eAntiCruiser, "AntiCruiser")
+	
+end
